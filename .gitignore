@@ -1,0 +1,14 @@
+build
+npm-debug.log
+**/logs
+*.log
+.nyc
+.env
+.DS_Store
+.idea
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+dist/
+node_modules/
