@@ -1,0 +1,10 @@
+#calculatorCanvas {
+    border: 1px solid #000;
+    border-radius: 15px;
+    display: block;
+    margin: auto;
+}
+
+canvas {
+    border: 1px solid #000;
+}
