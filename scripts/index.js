@@ -56,6 +56,10 @@ function drawExpression() {
     ctx.fillText(expression, canvas.width, 85);
 }
 
+function evaluate(codeString) {
+    return Function('"use strict"; return (' + codeString + ')')();
+  }
+
 //evaluateExpression method to evaluate the expression typed using the eval() function
 function evaluateExpression() {
     try {
@@ -63,7 +67,7 @@ function evaluateExpression() {
         drawExpression();
         //changing the cross symbol to asterisk symbol to prevent exception while using eval()
         expression = expression.replaceAll('x', '*');
-        expression = eval(expression).toString();
+        expression = evaluate(expression).toString();
     } catch (error) {
         expression = 'Invalid Expression';
     }
@@ -72,7 +76,7 @@ function evaluateExpression() {
 }
 
 //callback function that gets triggered when any of the button is clicked in the canvas
-function handleButtonClick(event) {
+function clickButtonCallback(event) {
     //retrieving the x and y coordinate value of the point where the click event occurred
     const x = event.clientX - canvas.offsetLeft;
     const y = event.clientY - canvas.offsetTop;
@@ -136,7 +140,7 @@ function handleButtonClick(event) {
 }
 
 //adding click event listener and providing handleButtonClick as the callback function
-canvas.addEventListener('click', handleButtonClick);
+canvas.addEventListener('click', clickButtonCallback);
 
 // Drawing red, yellow, and green circles to indicate close, minimize and maximize buttons respectively
 drawCircleButtons();
